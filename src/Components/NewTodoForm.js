@@ -21,11 +21,11 @@ class NewTodoForm extends Component {
         return (
             <div>
                 <form onSubmit = {this.handleSubmit}>
-                    <label htmlFor='task'>New Todo: </label>
+                    <label htmlFor="task">New Todo: </label>
                     <input
-                        id ='task'
-                        name ='task'
-                        type='text'
+                        id ="task"
+                        name ="task"
+                        type="text"
                         value = {this.props.task}
                         onChange = {this.handleChange}
                     />
