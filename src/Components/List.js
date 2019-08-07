@@ -9,12 +9,17 @@ class List extends Component {
     };
 
     addTodo = (newTodo) => {
-        console.log('click', newTodo)
         let newId = {...newTodo, id: uuid()};
         this.setState(prev => ({
             todos: [...prev.todos, newId]
         }))
     };
+
+    removeTodo = (id) => {
+        this.setState(prev => ({
+            todos: prev.todos.filter(elem => elem.id !== id)
+        }))
+    }
 
     render() {
         const todoList = this.state.todos.map(item => (
@@ -22,6 +27,7 @@ class List extends Component {
                 key={item.id}
                 id={item.id}
                 task={item.task}
+                remove={() => this.removeTodo(item.id)}
             />
         ));
 
