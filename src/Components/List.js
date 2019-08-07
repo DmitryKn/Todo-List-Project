@@ -18,8 +18,20 @@ class List extends Component {
     removeTodo = (id) => {
         this.setState(prev => ({
             todos: prev.todos.filter(elem => elem.id !== id)
-        }))
-    }
+        }));
+    };
+
+    updateTodo = (id, updatedTask) => {
+        const updatedTodos = this.state.todos.map(todo => {
+            if(todo.id === id) {
+                return {...todo, task: updatedTask}
+            }
+            return todo
+        });
+        this.setState({
+            todos: updatedTodos
+        });
+    };
 
     render() {
         const todoList = this.state.todos.map(item => (
@@ -28,6 +40,7 @@ class List extends Component {
                 id={item.id}
                 task={item.task}
                 remove={() => this.removeTodo(item.id)}
+                updateTodo={this.updateTodo}
             />
         ));
 
