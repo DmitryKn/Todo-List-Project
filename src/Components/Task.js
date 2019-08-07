@@ -24,7 +24,7 @@ class Task extends Component {
         })
     };
     render() {
-        const {task, remove} = this.props;
+        const {task, remove, toggleCompletion} = this.props;
         let result;
         if(this.state.isEditing) {
             result = (
@@ -43,7 +43,10 @@ class Task extends Component {
         } else {
             result = (
                 <div>
-                    <li>{task}</li>
+                    <li
+                        className={this.props.completed ? "completed" : ""}
+                        onClick={toggleCompletion}
+                    >{task}</li>
                     <button onClick={this.toggleForm}>Edit</button>
                     <button onClick={remove}>X</button>
                 </div>

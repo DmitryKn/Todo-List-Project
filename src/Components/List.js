@@ -23,14 +23,22 @@ class List extends Component {
 
     updateTodo = (id, updatedTask) => {
         const updatedTodos = this.state.todos.map(todo => {
-            if(todo.id === id) {
-                return {...todo, task: updatedTask}
-            }
-            return todo
+            if (todo.id === id) {
+            return { ...todo, task: updatedTask };
+          }
+          return todo;
         });
-        this.setState({
-            todos: updatedTodos
+        this.setState({ todos: updatedTodos });
+    };
+
+    toggleCompletion = (id) => {
+        const updatedTodos = this.state.todos.map(todo => {
+          if (todo.id === id) {
+            return { ...todo, completed: !todo.completed };
+          }
+          return todo;
         });
+        this.setState({ todos: updatedTodos });
     };
 
     render() {
@@ -39,8 +47,10 @@ class List extends Component {
                 key={item.id}
                 id={item.id}
                 task={item.task}
+                completed={item.completed}
                 remove={() => this.removeTodo(item.id)}
                 updateTodo={this.updateTodo}
+                toggleCompletion={() => this.toggleCompletion(item.id)}
             />
         ));
 
