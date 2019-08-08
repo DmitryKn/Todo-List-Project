@@ -55,8 +55,8 @@ class List extends Component {
         ));
 
         return (
-            <div>
-                <h1>Todo List:</h1>
+            <div className="TodoList">
+                <h1>React Todo List:</h1>
                 <NewTodoForm addTodo={this.addTodo}/>
                 <ul>
                     {todoList}
